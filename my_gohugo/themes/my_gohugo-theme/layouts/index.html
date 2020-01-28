@@ -1,0 +1,19 @@
+{{ partial "header.html" . }}
+{{ partial "sidebar.html" . }}
+<div class="main">
+	<h1>Welcome</h1>
+ 	<h1>Our Envents</h1>
+ 	{{ range first 10 ( sort (where .Data.Pages "Type" "=" "events") "Params.when") }}
+	 	{{ $t := (time (.Param "when")) }}
+	  	{{ if and (gt $t.Unix now.Unix) (eq (.Param "important") true ) }}
+			<li>
+			<a href="{{ .Permalink }}" > {{ .Param "when" }}{{ .Title }} </a>
+			</li>
+			<div class="line"></div>
+		{{ end }}	
+	{{ end }}
+
+</div>
+</body>
+{{ partial "footer.html" . }}
+</html>

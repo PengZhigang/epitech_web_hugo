@@ -1,0 +1,13 @@
+{{ partial "header.html" . }}
+{{ partial "sidebar.html" . }}
+<div class="main">
+	{{ range first 10 (where .Data.Pages "Type" "=" "associations") }}
+		<li>
+		<a href="{{ .Permalink }}" > {{ .Title }} </a>
+		</li>
+		<div class="line"></div>
+	{{ end }}
+</div>
+</body>
+{{ partial "footer.html" . }}
+</html>

@@ -1,0 +1,102 @@
+[
+    {
+        "title": "A1",
+        "uri": "associations/a1",
+        "content": "",
+        "objectID": "associations/a1",
+        "domaine": "",
+        "address": "",
+        "description": "",
+        "photo": "",
+        "important": false
+    },
+    {
+        "title": "A2",
+        "uri": "associations/a2",
+        "content": "",
+        "objectID": "associations/a2",
+        "domaine": "",
+        "address": "",
+        "description": "",
+        "photo": "",
+        "important": false
+    },
+    {
+        "title": "A3",
+        "uri": "associations/a3",
+        "content": "",
+        "objectID": "associations/a3",
+        "domaine": "",
+        "address": "",
+        "description": "",
+        "photo": "",
+        "important": false
+    },
+    {
+        "title": "A4",
+        "uri": "associations/a4",
+        "content": "",
+        "objectID": "associations/a4",
+        "domaine": "",
+        "address": "",
+        "description": "",
+        "photo": "",
+        "important": false
+    },
+    {
+        "title": "A5",
+        "uri": "associations/a5",
+        "content": "",
+        "objectID": "associations/a5",
+        "domaine": "",
+        "address": "",
+        "description": "",
+        "photo": "",
+        "important": false
+    },
+    {
+        "firstName": "s",
+        "uri": "conseil-municipal/c1",
+        "content": "",
+        "objectID": "conseil-municipal/c1",
+        "lastName": "b",
+        "role": "Deputy",
+        "photo": "/img/conseil-municipal/c1.jpg"
+    },
+    {
+        "firstName": "s",
+        "uri": "conseil-municipal/c2",
+        "content": "",
+        "objectID": "conseil-municipal/c2",
+        "lastName": "bb",
+        "role": "Deputy",
+        "photo": ""
+    },
+    {
+        "firstName": "vcc",
+        "uri": "conseil-municipal/c3",
+        "content": "",
+        "objectID": "conseil-municipal/c3",
+        "lastName": "cccc",
+        "role": "Deputy",
+        "photo": ""
+    },
+    {
+        "firstName": "vvv",
+        "uri": "conseil-municipal/c4",
+        "content": "",
+        "objectID": "conseil-municipal/c4",
+        "lastName": "cccc",
+        "role": "Deputy",
+        "photo": ""
+    },
+    {
+        "firstName": "ccc",
+        "uri": "conseil-municipal/c5",
+        "content": "",
+        "objectID": "conseil-municipal/c5",
+        "lastName": "sss",
+        "role": "Deputy",
+        "photo": ""
+    }
+]

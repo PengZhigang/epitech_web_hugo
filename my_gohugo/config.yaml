@@ -1,0 +1,11 @@
+---
+baseURL : "http://example.org/"
+languageCode : "en-us"
+title : "My New Hugo Site"
+theme : "my_gohugo-theme"
+metaDataFormat: "yaml"
+algolia:
+  index: "hugo"
+  key: "a11da86a18ab2ece70af6b90a350599b"
+  appID: "0KJC3VESQ2"
+---

@@ -1,0 +1,10 @@
+{{ partial "header.html" . }}
+{{ partial "sidebar.html" . }}
+<div class="main">
+	{{ range (where .Data.Pages "Type" "=" "presentation") }}
+			<a href="{{ .Permalink }}" > {{ .Title }} </a>
+	{{ end }}
+</div>
+</body>
+{{ partial "footer.html" . }}
+</html>

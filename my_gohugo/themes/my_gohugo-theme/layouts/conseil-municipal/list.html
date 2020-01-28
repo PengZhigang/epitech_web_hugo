@@ -1,0 +1,17 @@
+{{ partial "header.html" . }}
+{{ partial "sidebar.html" . }}
+<div class="main">
+	{{ range (where .Data.Pages "Type" "=" "conseil-municipal") }}
+		<p>
+			<img class="img_cm" src="{{.Param "photo"}}">
+		</p>
+		<p class="nom" >
+			<a href="{{ .Permalink }}" > {{ .Param "firstName"}}&nbsp;{{ .Param "lastName" }} </a>
+		</p>
+		<p class="nom">{{ .Param "role" }}</p>
+		<div class="line"></div>
+	{{ end }}
+</div>
+</body>
+{{ partial "footer.html" . }}
+</html>

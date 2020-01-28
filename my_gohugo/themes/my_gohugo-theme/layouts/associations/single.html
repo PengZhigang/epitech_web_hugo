@@ -1,0 +1,52 @@
+{{ partial "header.html" . }}
+{{ partial "sidebar.html" . }}
+<div class="main">
+	<h1> {{ .Title }} </h1>
+	<li>{{ .Param "domaine"}}</li>
+	<div class="line"></div>
+	<h2>Upcoming Events </h2>
+	{{ $title := .Title }}
+	{{ range (where .Site.RegularPages "Section" "events") }}
+		{{ $a := .Param "association" }}
+		<!-- <a href="{{ .Permalink }}" > {{ .Title }} </a> -->
+	 	{{ if eq $title $a }}
+		 	{{ $t := (time (.Param "when")) }}
+	  		{{ if ge $t.Unix now.Unix }}
+			 	<li>
+			 		<a href="{{ .Permalink }}" > {{ .Title }} </a>
+			 	</li>
+			{{ end }}
+	 	{{ end }}
+	 {{ end }}
+
+
+	<button onclick="myFunction()">Past Events</button>
+	<div id="myDIV" style="display: none">
+	{{ range (where .Site.RegularPages "Section" "events") }}
+		{{ $a := .Param "association" }}
+		<!-- <a href="{{ .Permalink }}" > {{ .Title }} </a> -->
+	 	{{ if eq $title $a }}
+		 	{{ $t := (time (.Param "when")) }}
+	  		{{ if lt $t.Unix now.Unix }}
+			 	<li>
+			 		<a href="{{ .Permalink }}" > {{ .Title }} </a>
+			 	</li>
+			{{ end }}
+	 	{{ end }}
+	 {{ end }}
+	</div>
+	<script>
+	function myFunction() {
+	  var x = document.getElementById("myDIV");
+	  if (x.style.display === "none") {
+	    x.style.display = "block";
+	  } else {
+	    x.style.display = "none";
+	  }
+	}
+	</script>
+</div>
+
+</body>
+{{ partial "footer.html" . }}
+</html>

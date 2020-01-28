@@ -1,0 +1,39 @@
+
+<div class="sidenav">
+    <ul> Associations
+  {{ range (where .Site.RegularPages "Section" "associations") }}
+    <li>
+    <a href="{{ .Permalink }}" > {{ .Title }} </a>
+    </li>
+  {{ end }}
+  </ul>
+  <form class="navbar-form">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search" name="search" autocomplete="off" id="search">
+      <div class="input-group-btn" style="vertical-align: top;">
+        <button class="btn btn-default" id="search" type="submit">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+  <script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/algoliasearch.min.js" | absURL }}"></script>
+  <script src="{{ "https://res.cloudinary.com/jimmysong/raw/upload/rootsongjc-hugo/autocomplete.min.js" | absURL }}"></script>
+  <script>
+  var client = algoliasearch("0KJC3VESQ2", "e717388e93087112560a7211b9f63685");
+  var index = client.initIndex('hugo');
+  autocomplete('#search',
+  { hint: false}, {
+      source: autocomplete.sources.hits(index, {hitsPerPage: 8}),
+      displayKey: 'name',
+      templates: {
+          suggestion: function(suggestion) {
+              console.log(suggestion);
+              return '<span>' + '<a href="/associations/' + suggestion.slug + '">' +
+              suggestion._highlightResult.title.value + '</a></span>';
+          }
+      }
+  });
+  </script>
+
+</div>

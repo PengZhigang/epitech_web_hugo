@@ -1,0 +1,25 @@
+{{ partial "header.html" . }}
+{{ partial "sidebar.html" . }}
+<div class="main">
+	
+	{{ $nom := .Param "association" }}
+	<h1>{{ .Title }} </h1>
+	<li>
+	{{ .Param "when"}}
+	</li>
+	{{ range .Param "photos" }}
+    	<li><img class="img_event" src="{{ . }}"></li>
+	{{ end }}
+	<div class="line"></div>	
+	{{ range (where .Site.RegularPages "Section" "associations") }}
+		{{ $title := .Title }}
+		<!-- <a href="{{ .Permalink }}" > {{ .Title }} </a> -->
+	 	{{ if eq $title $nom }}
+	 	<p>Association:</p>
+	 		<a href="{{ .Permalink }}" > {{ .Title }} </a>
+	 	{{ end }}
+	 {{ end }}
+</div>
+</body>
+{{ partial "footer.html" . }}
+</html>

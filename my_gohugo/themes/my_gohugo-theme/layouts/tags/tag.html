@@ -1,0 +1,45 @@
+{{ partial "header.html" . }}
+{{ partial "sidebar.html" . }}
+<div class="main">
+	
+
+{{ $justTheSplit := split .URL "/" }}
+<!-- $justTheSplit := ["", "tags", "mytag", ""] !-->
+{{ $aStringWithoutLastEmpty := delimit (split .URL "/") "," "" }}
+<!-- $aStringWithoutLastEmpty := ",tags,mytag" !-->	
+{{ $arrayAgain := split (delimit (split .URL "/") "," "") "," }}
+<!-- $arrayAgain := [",", "tags", "mytag"] !-->
+{{ $tag := index (last 1 (split (delimit (split .URL "/") "," "") ",")) 0 }}
+<!-- $tag := ["mytag"] !-->
+{{ $tagp := "past" }}
+{{ if eq $tag $tagp }}
+<ul>Past Events
+  {{ range sort (where .Data.Pages "Type" "=" "events") "Params.when" }}
+  	{{ $t := (time (.Param "when")) }}
+  	{{ if lt $t.Unix now.Unix }}
+	    <li>
+	      <a href="{{.RelPermalink}}">{{ .Title }} &nbsp; {{ .Param "when"}} </a>
+
+	    </li>
+	    <div class="line"></div>
+	{{ end }}
+  {{ end }}
+{{ else }}
+<ul>Upcoming Events
+	{{ range sort (where .Data.Pages "Type" "=" "events") "Params.when" }}
+  	{{ $t := (time (.Param "when")) }}
+  	{{ if ge $t.Unix now.Unix }}
+	    <li>
+	      <a href="{{.RelPermalink}}">{{ .Title }} &nbsp; {{ .Param "when"}}</a>
+
+	    </li>
+	    <div class="line"></div>
+	{{ end }}
+  {{ end }}
+{{ end }}
+</ul>
+</div>
+
+</body>
+{{ partial "footer.html" . }}
+</html>

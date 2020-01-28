@@ -1,0 +1,57 @@
+ {{ partial "header.html" . }}
+
+ <link href="/js/core/main.css" rel='stylesheet' />
+  <link href='/js/daygrid/main.css' rel='stylesheet' />
+  <script src='/js/core/main.js'></script>
+  <script src='/js/interaction/main.js'></script>
+  <script src='/js/daygrid/main.js'></script>
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        plugins: [ 'interaction', 'dayGrid' ],
+        header: {
+          left: 'prevYear,prev,next,nextYear today',
+          center: 'title',
+          right: 'dayGridMonth,dayGridWeek,dayGridDay'
+        },
+        //defaultDate: '2019-08-12',
+        navLinks: true, // can click day/week names to navigate views
+        editable: true,
+        eventLimit: true, // allow "more" link when too many events
+        events: [
+        {
+          title: 'Business Lunch',
+          start: '2019-08-03T13:00:00',
+          constraint: 'businessHours'
+        },
+           {{ range $index, $e := (where .Site.RegularPages "Section" "events" ) }} 
+              {
+                title:'{{ .Title }}',
+                start:'{{ .Param "when" }}',
+                url:'{{ .Permalink }}'
+              },
+           {{ end }}
+           {
+          title: 'Business Lunch',
+          start: '2019-08-03T13:00:00',
+          constraint: 'businessHours'
+        },
+        ]
+
+      });
+
+      calendar.render();
+    });
+
+</script>
+<div id='calendar'></div>
+
+
+</div>
+
+</body>
+{{ partial "footer.html" . }}
+</html>
